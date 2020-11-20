@@ -11,23 +11,25 @@ const calcPercentage = function (number, discountPerc) {
 };
 
 btnDiscount.addEventListener("click", function (event) {
-  const inputMoneyValue = inputTotal.value;
-  const inputDiscountValue = inputPercentage.value;
-
-  console.log(typeof inputMoneyValue, typeof inputDiscountValue);
+  const inputMoneyValue = Number(inputTotal.value);
+  const inputDiscountValue = Number(inputPercentage.value);
 
   event.preventDefault();
 
-  if (inputDiscountValue >= 1 && inputDiscountValue <= 100) {
-    const discount = calcPercentage(inputMoneyValue, inputDiscountValue);
-    const total = inputMoneyValue - discount;
-
-    discountContainer.textContent = total;
-  } else if (inputDiscountValue > 100) {
-    discountContainer.textContent = `Discount percentage is ${inputDiscountValue} and not bellow 100`;
+  if (isNaN(inputMoneyValue) || isNaN(inputDiscountValue)) {
+    discountContainer.textContent = "Please insert valid number!";
   } else {
-    discountContainer.textContent = `Discount percentage is ${inputDiscountValue} and it's not equal or greater than 1`;
+    if (inputDiscountValue >= 1 && inputDiscountValue <= 100) {
+      const discount = calcPercentage(inputMoneyValue, inputDiscountValue);
+      const total = inputMoneyValue - discount;
+
+      discountContainer.textContent = total;
+    } else if (inputDiscountValue > 100) {
+      discountContainer.textContent = `Discount percentage is ${inputDiscountValue} and not bellow 100`;
+    } else {
+      discountContainer.textContent = `Discount percentage is ${inputDiscountValue} and it's not equal or greater than 1`;
+    }
   }
 });
 
-// Create a condtion for when the value is not a number or has nothing in the input
+// Create a new feature for the Title, that when the mouse is over the Title becomes a button to play a game

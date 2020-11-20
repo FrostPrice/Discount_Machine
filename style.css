@@ -6,14 +6,14 @@
 }
 
 body {
+  height: 100vh;
   background-image: linear-gradient(
-    to right,
+    130deg,
     rgb(42, 231, 168),
     rgb(137, 221, 58)
   );
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
